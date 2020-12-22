@@ -1,6 +1,7 @@
 package IO;
 
 import Objects.LoginData;
+import Objects.LoginList;
 
 import java.io.*;
 import java.util.Scanner;

@@ -1,5 +1,7 @@
 package Objects;
 
+import java.util.ArrayList;
+
 public class LoginDom {
     public String usernameXPath;
     public String passwordXPath;

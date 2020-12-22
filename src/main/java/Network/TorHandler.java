@@ -36,22 +36,24 @@ public class TorHandler implements Handler {
         wait = new WebDriverWait(driver, 30);
     }
 
-    @Override,
+    @Override
     public boolean getResponse(LoginData person, LoginDom domModel) throws IOException, InterruptedException {
 
         driver.navigate().to(domModel.url);
+
         WebElement username = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(domModel.usernameXPath)));
         WebElement pwd = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(domModel.passwordXPath)));
         try {
             driver.findElement(By.xpath(domModel.checkForXPath)).click();
         } catch (ElementNotVisibleException | NoSuchElementException e) {
-            System.out.println("No accept cookie!");
         }
+
         username.sendKeys(person.username);
         pwd.sendKeys(person.password);
 
         // Locate the login button and click on it
-        driver.findElement(By.xpath(domModel.loginXPath)).click();
+        WebElement button = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(domModel.loginXPath)));
+        button.click();
         try {
             WebDriverWait waitS = new WebDriverWait(driver, 5);
             waitS.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(domModel.message)));
