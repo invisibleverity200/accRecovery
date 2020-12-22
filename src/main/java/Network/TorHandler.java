@@ -36,7 +36,7 @@ public class TorHandler implements Handler {
         wait = new WebDriverWait(driver, 30);
     }
 
-    @Override
+    @Override,
     public boolean getResponse(LoginData person, LoginDom domModel) throws IOException, InterruptedException {
 
         driver.navigate().to(domModel.url);
